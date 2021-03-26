@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@kraken-nest/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@kraken-nest/client-rest": ["libs/client-rest/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

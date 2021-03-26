@@ -1,12 +1,46 @@
-
-
 # KrakenNest
+<p align="center"><img src="./logo.png"></p>
+
+### Project specific ReadMe
+The core of the libs/kraken.ts file is based on work from https://github.com/nothingisdead/npm-kraken-api
+
+The remainder of the project was scaffolded with Nx which you can read about in the Auto generated readMe at the bottom of this file.
+
+This is a mono repo with an Ionic/Angular/Capacitor front-end. The back-end currently supports the Kraken API. In the future this may get extended to support other APIs.
+
+USE AT YOUR OWN RISK! No warranty is implied or intended.
+
+I started this project as a way to explore Nx tools, monorepos, NestJS, and API implementations. I also just like the Ionic framework for its dead simple basics and 
+reasonable ease of extension into hybrid and PWA. 
+
+As it evolves I hope to use it as a "local to my personal computer only" trading platform to solve some of the problems related to trading bots observing trading data on a platform in order to 
+manipulate and profit from such trades. If your trade triggers are local/private, the bots are denied this info.
+
+The front-end is simple enough to start with `nx serve`
+
+The back-end is also pretty easy. Just use `nx start api`. You will then be asked for your key and secret.
+I set it up this way so that these are not stored anywhere in the code or project. On my personal system I have these 
+stored in an encrypted PDF. At start up I enter these via cut and paste inputs rather than passing via command line. The reason being if they were 
+passed on the command line it would defeat the purpose since they would then be visible on the history log.  
+
+This probably wouldn't stop a "state sponsored" hacker that manages to steal my computer, but it should be good enough to slow down the after smash and grab thief while I go to the local library and revoke my keys.
+
+
+#### Auto generated readme below
 
 This project was generated using [Nx](https://nx.dev).
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
 🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+
+## Quick Start & Documentation
+
+[Nx Documentation](https://nx.dev/angular)
+
+[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+
+[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
 
 ## Adding capabilities to your workspace
 
@@ -16,24 +50,24 @@ These capabilities include generating applications, libraries, etc as well as th
 
 Below are our core plugins:
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
 - [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
+  - `ng add @nrwl/angular`
+- [React](https://reactjs.org)
+  - `ng add @nrwl/react`
+- Web (no framework frontends)
+  - `ng add @nrwl/web`
 - [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
+  - `ng add @nrwl/nest`
 - [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
+  - `ng add @nrwl/express`
 - [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+  - `ng add @nrwl/node`
 
 There are also many [community plugins](https://nx.dev/nx-community) you could add.
 
 ## Generate an application
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+Run `ng g @nrwl/angular:app my-app` to generate an application.
 
 > You can use any of the plugins above to generate applications as well.
 
@@ -41,7 +75,7 @@ When using Nx, you can create multiple applications and libraries in the same wo
 
 ## Generate a library
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+Run `ng g @nrwl/angular:lib my-lib` to generate a library.
 
 > You can also use any of the plugins above to generate libraries as well.
 
@@ -49,19 +83,19 @@ Libraries are shareable across libraries and applications. They can be imported 
 
 ## Development server
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+Run `ng g component my-component --project=my-app` to generate a new component.
 
 ## Build
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
 
 Run `nx affected:test` to execute the unit tests affected by a change.
 
@@ -77,7 +111,10 @@ Run `nx dep-graph` to see a diagram of the dependencies of your projects.
 
 ## Further help
 
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+
+
+
 
 
 

@@ -1,13 +1,17 @@
 import { Controller, Get } from '@nestjs/common';
-
-import { AppService } from './app.service';
+import { KrakenService } from '../services/kraken/kraken.service';
+import { from, Observable } from 'rxjs';
+import { KrakenApiResponse } from '@kraken-nest/api-interfaces';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly krakenService: KrakenService) {
+    this.krakenService.key = process.env.KEY;
+    this.krakenService.secret = process.env.SECRET;
+  }
 
-  @Get()
-  getData() {
-    return this.appService.getData();
+  @Get('trade-history')
+  getTradeHistory(): Observable<KrakenApiResponse> {
+    return from(this.krakenService.request('TradesHistory'));
   }
 }

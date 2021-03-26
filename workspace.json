@@ -1,8 +1,6 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/nest"
-  },
+  "cli": { "defaultCollection": "@nrwl/nest" },
   "defaultProject": "backend",
   "projects": {
     "backend": {
@@ -36,15 +34,11 @@
         },
         "serve": {
           "executor": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "backend:build"
-          }
+          "options": { "buildTarget": "backend:build" }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/backend/**/*.ts"]
-          }
+          "options": { "lintFilePatterns": ["apps/backend/**/*.ts"] }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -55,6 +49,215 @@
           }
         }
       }
+    },
+    "tradonic": {
+      "projectType": "application",
+      "root": "apps/tradonic",
+      "sourceRoot": "apps/tradonic/src",
+      "prefix": "kraken-nest",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/tradonic",
+            "index": "apps/tradonic/src/index.html",
+            "main": "apps/tradonic/src/main.ts",
+            "polyfills": "apps/tradonic/src/polyfills.ts",
+            "tsConfig": "apps/tradonic/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/tradonic/src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              "apps/tradonic/src/styles.scss",
+              { "input": "apps/tradonic/src/theme/variables.scss" }
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/tradonic/src/environments/environment.ts",
+                  "with": "apps/tradonic/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "tradonic:build"
+          },
+          "configurations": {
+            "production": { "browserTarget": "tradonic:build:production" }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": { "browserTarget": "tradonic:build" }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/tradonic/src/**/*.ts",
+              "apps/tradonic/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/tradonic"],
+          "options": {
+            "jestConfig": "apps/tradonic/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "cap": {
+          "executor": "@nxtend/capacitor:cap",
+          "options": { "cmd": "--help" }
+        },
+        "add": {
+          "executor": "@nxtend/capacitor:cap",
+          "options": { "cmd": "add", "packageInstall": true },
+          "configurations": {
+            "ios": { "cmd": "add ios" },
+            "android": { "cmd": "add android" }
+          }
+        },
+        "copy": {
+          "executor": "@nxtend/capacitor:cap",
+          "options": { "cmd": "copy", "packageInstall": false },
+          "configurations": {
+            "ios": { "cmd": "copy ios" },
+            "android": { "cmd": "copy android" }
+          }
+        },
+        "open": {
+          "executor": "@nxtend/capacitor:cap",
+          "options": { "cmd": "open", "packageInstall": false },
+          "configurations": {
+            "ios": { "cmd": "open ios" },
+            "android": { "cmd": "open android" }
+          }
+        },
+        "sync": {
+          "executor": "@nxtend/capacitor:cap",
+          "options": { "cmd": "sync", "packageInstall": true },
+          "configurations": {
+            "ios": { "cmd": "sync ios" },
+            "android": { "cmd": "sync android" }
+          }
+        },
+        "update": {
+          "executor": "@nxtend/capacitor:cap",
+          "options": { "cmd": "update", "packageInstall": true },
+          "configurations": {
+            "ios": { "cmd": "update ios" },
+            "android": { "cmd": "update android" }
+          }
+        }
+      }
+    },
+    "tradonic-e2e": {
+      "root": "apps/tradonic-e2e",
+      "sourceRoot": "apps/tradonic-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/tradonic-e2e/cypress.json",
+            "tsConfig": "apps/tradonic-e2e/tsconfig.e2e.json",
+            "devServerTarget": "tradonic:serve"
+          },
+          "configurations": {
+            "production": { "devServerTarget": "tradonic:serve:production" }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/tradonic-e2e/**/*.{js,ts}"] }
+        }
+      }
+    },
+    "api-interfaces": {
+      "root": "libs/api-interfaces",
+      "sourceRoot": "libs/api-interfaces/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/api-interfaces/**/*.ts"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api-interfaces"],
+          "options": {
+            "jestConfig": "libs/api-interfaces/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "client-rest": {
+      "root": "libs/client-rest",
+      "sourceRoot": "libs/client-rest/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["libs/client-rest/**/*.ts"] }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/client-rest"],
+          "options": {
+            "jestConfig": "libs/client-rest/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": { "style": "scss" }
   }
 }
