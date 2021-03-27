@@ -1,0 +1,7 @@
+{
+  "name": "tradonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
