@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'folder/Inbox',
-    pathMatch: 'full',
-  },
-  {
-    path: 'folder/:id',
+    path: '**',
     loadChildren: () =>
-      import('./folder/folder.module').then((m) => m.FolderPageModule),
+      import('./account-balance/account-balance.module').then((m) => m.AccountBalanceModule),
   },
 ];
 
