@@ -1,8 +1,8 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
+    <ion-menu type="overlay" contentId="main-content" type="overlay" class="ion-no-padding">
       <ion-content>
-        <ion-list>
+        <div class="menu">
           <ion-menu-toggle
             auto-hide="false">
             <ion-item
@@ -14,7 +14,8 @@
               <ion-label>Account Balance</ion-label>
             </ion-item>
           </ion-menu-toggle>
-        </ion-list>
+        </div>
+
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

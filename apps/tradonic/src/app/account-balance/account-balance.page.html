@@ -9,6 +9,24 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  hello
+<ion-content *ngIf="accountBalance.length > 0">
+ <ion-item *ngFor="let balance of accountBalance">
+   <ion-grid>
+     <ion-row>
+       <ion-col size="3">
+         Token:
+         {{balance.token}}
+       </ion-col>
+       <ion-col size="4">
+         Balance:
+         {{balance.balance}}
+       </ion-col>
+       <ion-col size="5">
+         24 hr avg value:
+         {{balance.total | currency:'$'}}
+       </ion-col>
+     </ion-row>
+
+   </ion-grid>
+ </ion-item>
 </ion-content>

@@ -6,6 +6,40 @@ export const endPoints = {
   private: ['Balance', 'TradeBalance', 'OpenOrders', 'ClosedOrders', 'QueryOrders', 'TradesHistory', 'QueryTrades', 'OpenPositions', 'Ledgers', 'QueryLedgers', 'TradeVolume', 'AddOrder', 'CancelOrder', 'DepositMethods', 'DepositAddresses', 'DepositStatus', 'WithdrawInfo', 'Withdraw', 'WithdrawStatus', 'WithdrawCancel', 'GetWebSocketsToken'],
 };
 
+export enum PublicEndPoints {
+  time='Time',
+  assets = 'Assets',
+  assetPairs = 'AssetPairs',
+  ticker = 'Ticker',
+  depth = 'Depth',
+  trades = 'Trades',
+  spread = 'Spread',
+  ohlc = 'OHLC',
+}
+
+export enum PrivteEndPoints {
+  balance='Balance',
+  tradeBalance = 'TradeBalance',
+  openOrders = 'OpenOrders',
+  queryOrders = 'QueryOrders',
+  tradesHistory = 'TradesHistory',
+  queryTrades = 'QueryTrades',
+  openPositions = 'OpenPositions',
+  ledgers = 'Ledgers',
+  queryLedgers = 'QueryLedgers',
+  tradeVolume = 'TradeVolume',
+  addOrder = 'AddOrder',
+  cancelOrder = 'CancelOrder',
+  depositMethods = 'DepositMethods',
+  DepositAddresses = 'DepositAddresses',
+  depositStatus = 'DepositStatus',
+  withdrawInfo = 'WithdrawInfo',
+  withdraw = 'Withdraw',
+  withdrawStatus = 'WithdrawStatus',
+  withdrawCancel = 'WithdrawCancel',
+  getWebSocketsToken  = 'GetWebSocketsToken',
+}
+
 // Default options
 export const defaults: Configuration = {
   url: 'https://api.kraken.com',

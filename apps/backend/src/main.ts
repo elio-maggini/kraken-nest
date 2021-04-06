@@ -33,6 +33,7 @@ async function bootstrap() {
     Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
   });
 }
+// bootstrap();
 
 // add code to get input for tokens and then bootstrap if we have values
 inquirer.prompt(questions).then(answers => {

@@ -23,13 +23,11 @@ export class KrakenService {
   /**
    * This method makes a public or private API request.
    * @param  {String}   endPoint   The API method (public or private)
+   * @param  {String}   params     Arguments to pass to the api call
    * @param  {String}   config     The variables needed for personalized access
-   * @param  {Function} callback   A callback function to be executed when the request is complete
-   * @param  {Object}   params     Arguments to pass to the api call
-   * @return {Object}              The request object
+   * @return {Object}              The request as Promise
    */
-  public request(endPoint: string, config = {}, params = {}): Promise<KrakenApiResponse> {
-
+  public request(endPoint: string,  params = {}, config = {}): Promise<KrakenApiResponse> {
     // use our start up defaults if no over ride
     if (!config['key'] && !config['secret']) {
       config = {
@@ -39,8 +37,6 @@ export class KrakenService {
     }
 
     const configuration:Configuration = Object.assign({}, defaults, config);
-
-    console.log('the config is', configuration);
 
     if(endPoints.public.includes(endPoint)) {
       return this.publicMethod(endPoint, configuration, params);

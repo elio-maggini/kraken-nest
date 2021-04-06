@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { KrakenTradeHistory } from '@kraken-nest/api-interfaces';
+import { KrakenAccountBalance, KrakenApiResponse, KrakenTicker, KrakenTradeHistory } from '@kraken-nest/api-interfaces';
 
 @Injectable()
 export class KrakenService {
@@ -14,7 +14,7 @@ export class KrakenService {
     return this.http.get(path, options) as Observable<T>
   }
 
-  private post<T>(path: string, body: Body, options: Record<string, unknown>): Observable<T> {
+  private post<T>(path: string, body: Record<string, unknown>, options: Record<string, unknown>): Observable<T> {
     return this.http.post(path, body ?? {}, options) as Observable<T>;
   }
 
@@ -22,5 +22,11 @@ export class KrakenService {
     return this.get( this.apiPath + 'trade-history', {});
   }
 
+  getAccountBalance():Observable<KrakenAccountBalance>  {
+    return this.get( this.apiPath + 'account-balance', {});
+  }
 
+  getTicker(pair: string):Observable<KrakenTicker> {
+    return this.post(this.apiPath + 'ticker', {pair:pair}, {});
+  }
 }
