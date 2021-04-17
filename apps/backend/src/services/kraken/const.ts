@@ -51,6 +51,7 @@ export const defaults: Configuration = {
 };
 
 export const ConfigurationErrorMessage = '{key: someValue, secret: someValue} are required config fields';
+export const MissingKeysErrorMessage = 'The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type undefined';
 export  const InvalidEndpointErrorMessage = 'Invalid Endpoint:';
 export const InvalidKeyErrorMessage = 'API:Invalid key';
 

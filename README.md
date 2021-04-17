@@ -25,6 +25,11 @@ passed on the command line it would defeat the purpose since they would then be 
 
 This probably wouldn't stop a "state sponsored" hacker that manages to steal my computer, but it should be good enough to slow down the after smash and grab thief while I go to the local library and revoke my keys.
 
+You'll need to add your own pairs to libs/api-interfaces/src/lib/api-interfaces.ts in order to see them listed, otherwise you'll see errors in the console.
+
+There is A LOT that can be done to improve this project. It is a work in progress. Maybe someone elese will find this and join in.
+
+Otherwise, I'll continue to hack away while watching re-runs of "Buffy the Vampire Slayer" on the couch with my wife.
 
 #### Auto generated readme below
 

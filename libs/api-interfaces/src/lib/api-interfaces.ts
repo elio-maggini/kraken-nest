@@ -66,6 +66,8 @@ export abstract class TradingPair {
     'XXBT': 'XXBTZUSD',
     'XETH': 'XETHZUSD',
     'XXRP': 'XXRPZUSD',
-    'XTZ': 'XTZUSD'
+    'XTZ': 'XTZUSD',
+    'SC': 'SCUSD',
+    'ZUSD': 'ZUSD'
   };
 }

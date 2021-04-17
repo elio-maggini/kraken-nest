@@ -3,7 +3,7 @@ import {
   defaults,
   endPoints,
   InvalidEndpointErrorMessage,
-  InvalidKeyErrorMessage
+  InvalidKeyErrorMessage, MissingKeysErrorMessage
 } from './const';
 import { KrakenApiResponse } from '@kraken-nest/api-interfaces';
 import { KrakenService } from './kraken.service';
@@ -40,8 +40,8 @@ describe('kraken', () => {
     try {
       const response: KrakenApiResponse = await service.request('Balance', defaults);
     } catch (e) {
-      expect(e).toBeInstanceOf(Error);
-      expect(e.message).toBe(ConfigurationErrorMessage);
+      expect(e.code).toEqual('ERR_INVALID_ARG_TYPE');
+      expect(e.message).toEqual(MissingKeysErrorMessage);
     }
   });
 
@@ -51,8 +51,8 @@ describe('kraken', () => {
       defaults.secret = 'bar';
       const response: KrakenApiResponse = await service.request('Balance', defaults);
     } catch (e) {
-      expect(e).toBeInstanceOf(Error);
-      expect(e.message).toBe(InvalidKeyErrorMessage);
+      expect(e.code).toEqual('ERR_INVALID_ARG_TYPE');
+      expect(e.message).toEqual(MissingKeysErrorMessage);
     }
   });
 

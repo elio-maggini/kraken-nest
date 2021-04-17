@@ -21,12 +21,17 @@ export class AccountBalancePage implements ViewWillEnter{
       Object.keys(res1.result).map((key) => {
         if (+res1.result[key] < 0.00000000001) return;
         const myJsonObject = { token: key, balance: res1.result[key]};
-        const tradingPair = TradingPair.map[key]
-        this.krakenService.getTicker(TradingPair.map[key]).toPromise().then((res2) => {
-          myJsonObject['total'] = res2.result[tradingPair].p[1] * myJsonObject.balance;
-          console.log('myjson', myJsonObject);
+
+        if (myJsonObject.token === 'ZUSD') {
+          myJsonObject['total'] = myJsonObject.balance;
           this.accountBalance.push(myJsonObject);
-        });
+        } else {
+          const tradingPair = TradingPair.map[key]
+          this.krakenService.getTicker(TradingPair.map[key]).toPromise().then((res2) => {
+            myJsonObject['total'] = res2.result[tradingPair].p[1] * myJsonObject.balance;
+            this.accountBalance.push(myJsonObject);
+          });
+        }
       });
     });
   }

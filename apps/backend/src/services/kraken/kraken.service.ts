@@ -101,7 +101,6 @@ export class KrakenService {
   private async rawRequest(url, headers, data, timeout): Promise<KrakenApiResponse> {
     // Set custom User-Agent string
     headers['User-Agent'] = 'Kraken Javascript API Client';
-
     const options = { headers, timeout };
 
     Object.assign(options, {
